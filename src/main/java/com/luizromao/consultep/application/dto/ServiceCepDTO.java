@@ -2,8 +2,6 @@ package com.luizromao.consultep.application.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Builder
@@ -15,5 +13,4 @@ public class ServiceCepDTO {
   private String serviceType;
   private String name;
   private String description;
-  private List<ServiceAvailabilityDTO> serviceAvailabilities;
 }

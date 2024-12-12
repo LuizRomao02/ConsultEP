@@ -12,7 +12,9 @@ import java.time.LocalDateTime;
 public class LogCepDTO {
 
   private String id;
+  private String userCepId;
   private String cep;
   private String requestType;
+  private String jsonData;
   private LocalDateTime createdAt;
 }

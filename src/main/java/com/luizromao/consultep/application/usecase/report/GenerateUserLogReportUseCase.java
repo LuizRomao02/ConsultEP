@@ -2,7 +2,11 @@ package com.luizromao.consultep.application.usecase.report;
 
 import com.luizromao.consultep.domain.model.LogCep;
 import com.luizromao.consultep.domain.repository.LogCepRepository;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.List;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,26 +18,22 @@ public class GenerateUserLogReportUseCase {
     this.logCepRepository = logCepRepository;
   }
 
-  public String execute() {
+  public void execute(Writer writer) {
     List<LogCep> logs = logCepRepository.findAll();
 
-    StringBuilder report = new StringBuilder();
-    report.append("Log ID,User ID,CEP,Request Type,Request Time\n");
-
-    for (LogCep log : logs) {
-      report
-          .append(log.getId())
-          .append(",")
-          .append(log.getUserCep().getId())
-          .append(",")
-          .append(log.getCep())
-          .append(",")
-          .append(log.getRequestType())
-          .append(",")
-          .append(log.getCreatedAt())
-          .append("\n");
+    try (CSVPrinter csvPrinter =
+        new CSVPrinter(
+            writer, CSVFormat.DEFAULT.withHeader("Log ID,User ID,CEP,Request Type,Request Time"))) {
+      for (LogCep log : logs) {
+        csvPrinter.printRecord(
+            log.getId(),
+            log.getUserCep().getId(),
+            log.getCep(),
+            log.getRequestType(),
+            log.getCreatedAt());
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Error writing CSV data", e);
     }
-
-    return report.toString();
   }
 }

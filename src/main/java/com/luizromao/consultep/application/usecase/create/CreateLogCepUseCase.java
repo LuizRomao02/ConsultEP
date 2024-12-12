@@ -1,6 +1,5 @@
 package com.luizromao.consultep.application.usecase.create;
 
-import com.luizromao.consultep.application.dto.LogCepDTO;
 import com.luizromao.consultep.application.util.ConverterToDTO;
 import com.luizromao.consultep.domain.model.LogCep;
 import com.luizromao.consultep.domain.model.UserCep;
@@ -20,14 +19,10 @@ public class CreateLogCepUseCase {
   }
 
   @Transactional
-  public LogCepDTO execute(String userId, String cep, String requestType) {
+  public void execute(UserCep userCep, String cep, String requestType, String data) {
     LogCep log =
-        LogCep.builder()
-            .userCep(UserCep.builder().build())
-            .cep(cep)
-            .requestType(requestType)
-            .build();
+        LogCep.builder().userCep(userCep).cep(cep).requestType(requestType).jsonData(data).build();
 
-    return converterToDTO.toDto(logCepRepository.save(log));
+    logCepRepository.save(log);
   }
 }

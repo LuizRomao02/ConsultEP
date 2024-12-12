@@ -10,7 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class GetServiceAvailabilityUseCase {
 
-  private ServiceAvailabilityRepository serviceAvailabilityRepository;
+  private final ServiceAvailabilityRepository serviceAvailabilityRepository;
+
+  public GetServiceAvailabilityUseCase(
+      ServiceAvailabilityRepository serviceAvailabilityRepository) {
+    this.serviceAvailabilityRepository = serviceAvailabilityRepository;
+  }
 
   public boolean checkServiceAvailability(String serviceCepId, String cep) {
     Optional<ServiceAvailability> availability =

@@ -1,9 +1,6 @@
 package com.luizromao.consultep.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +24,8 @@ public class LogCep extends BaseEntity {
 
   @Column(name = "request_type", nullable = false, length = 50)
   private String requestType;
+
+  @Lob
+  @Column(columnDefinition = "LONGTEXT")
+  private String jsonData;
 }
