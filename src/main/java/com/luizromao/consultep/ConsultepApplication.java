@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConsultEpApplication {
+public class ConsultepApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ConsultEpApplication.class, args);
+    SpringApplication.run(ConsultepApplication.class, args);
   }
 }
