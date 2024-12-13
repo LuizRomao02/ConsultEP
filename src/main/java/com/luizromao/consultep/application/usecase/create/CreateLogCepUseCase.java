@@ -1,22 +1,17 @@
 package com.luizromao.consultep.application.usecase.create;
 
-import com.luizromao.consultep.application.util.ConverterToDTO;
 import com.luizromao.consultep.domain.model.LogCep;
 import com.luizromao.consultep.domain.model.UserCep;
 import com.luizromao.consultep.domain.repository.LogCepRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class CreateLogCepUseCase {
 
   private final LogCepRepository logCepRepository;
-  private final ConverterToDTO converterToDTO;
-
-  public CreateLogCepUseCase(LogCepRepository logCepRepository, ConverterToDTO converterToDTO) {
-    this.logCepRepository = logCepRepository;
-    this.converterToDTO = converterToDTO;
-  }
 
   @Transactional
   public void execute(UserCep userCep, String cep, String requestType, String data) {

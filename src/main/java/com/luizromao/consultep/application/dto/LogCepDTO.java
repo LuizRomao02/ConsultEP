@@ -1,8 +1,7 @@
 package com.luizromao.consultep.application.dto;
 
-import lombok.*;
-
 import java.time.LocalDateTime;
+import lombok.*;
 
 @Getter
 @Setter

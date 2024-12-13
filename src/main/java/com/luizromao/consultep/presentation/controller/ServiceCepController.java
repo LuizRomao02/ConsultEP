@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +19,32 @@ public class ServiceCepController {
 
   private final ServiceCepService serviceCepService;
 
-  @PostMapping
+  @PostMapping(
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<ServiceCepDTO> create(@RequestBody ServiceCepForm serviceCep) {
-    ServiceCepDTO createdServiceCep = serviceCepService.createServiceCep(serviceCep);
-    return ResponseEntity.status(201).body(createdServiceCep);
+    return ResponseEntity.status(HttpStatus.OK)
+        .body(serviceCepService.createServiceCep(serviceCep));
   }
 
-  @GetMapping
+  @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Page<ServiceCepDTO>> getAll(@PageableDefault Pageable pageable) {
     return ResponseEntity.ok(serviceCepService.findAllServiceCep(pageable));
+  }
+
+  @PutMapping(
+      value = "/{id}",
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<ServiceCepDTO> update(
+      @PathVariable String id, @RequestBody ServiceCepForm serviceCep) {
+    return ResponseEntity.status(HttpStatus.OK)
+        .body(serviceCepService.updateServiceCep(id, serviceCep));
+  }
+
+  @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Void> deleteAuthor(@PathVariable String id) {
+    serviceCepService.deleteServiceCep(id);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 }

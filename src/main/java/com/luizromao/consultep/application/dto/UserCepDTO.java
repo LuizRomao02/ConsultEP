@@ -1,7 +1,6 @@
 package com.luizromao.consultep.application.dto;
 
 import java.util.List;
-
 import lombok.*;
 
 @Getter

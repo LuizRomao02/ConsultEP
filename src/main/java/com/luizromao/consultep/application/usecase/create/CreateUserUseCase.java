@@ -3,17 +3,15 @@ package com.luizromao.consultep.application.usecase.create;
 import com.luizromao.consultep.application.dto.record.UserCepForm;
 import com.luizromao.consultep.domain.model.UserCep;
 import com.luizromao.consultep.domain.repository.UserCepRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class CreateUserUseCase {
 
   private final UserCepRepository userCepRepository;
-
-  public CreateUserUseCase(UserCepRepository userCepRepository) {
-    this.userCepRepository = userCepRepository;
-  }
 
   @Transactional
   public UserCep execute(UserCepForm userCepForm) {
@@ -21,8 +19,7 @@ public class CreateUserUseCase {
       throw new IllegalArgumentException("Email not validate");
     }
 
-    UserCep user = UserCep.builder().name(userCepForm.name()).email(userCepForm.email()).build();
-
-    return userCepRepository.save(user);
+    return userCepRepository.save(
+        UserCep.builder().name(userCepForm.name()).email(userCepForm.email()).build());
   }
 }
