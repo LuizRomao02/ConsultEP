@@ -12,9 +12,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ServiceCepService {
 
   private final CreateServiceCepUseCase createServiceCep;
@@ -35,11 +37,13 @@ public class ServiceCepService {
     deleteServiceCep.deleteServiceCep(id);
   }
 
+  @Transactional(readOnly = true)
   public Page<ServiceCepDTO> findAllServiceCep(Pageable pageable) {
     return getServiceCep.getAll(pageable).map(converterToDTO::toDto);
   }
 
-  public ServiceCep findServiceCepById(String id) {
+  @Transactional(readOnly = true)
+  public ServiceCep getById(String id) {
     return getServiceCep.getById(id);
   }
 }

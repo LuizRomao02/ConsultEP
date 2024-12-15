@@ -15,7 +15,7 @@ public class DeleteServiceAvailabilityUseCase {
 
   @Transactional
   public void deleteServiceAvailability(String id) {
-    var serviceAvailability = getServiceAvailability.getOneServiceAvailability(id);
+    var serviceAvailability = getServiceAvailability.getById(id);
     serviceAvailabilityRepository.delete(serviceAvailability);
   }
 }

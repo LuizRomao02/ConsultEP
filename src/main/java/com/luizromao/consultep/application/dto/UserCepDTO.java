@@ -14,4 +14,5 @@ public class UserCepDTO {
   private String name;
   private String email;
   private List<LogCepDTO> logs;
+  private CepApiMockDTO infoCep;
 }

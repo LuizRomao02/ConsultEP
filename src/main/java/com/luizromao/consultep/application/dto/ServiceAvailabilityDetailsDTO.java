@@ -7,11 +7,10 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceCepDTO {
+public class ServiceAvailabilityDetailsDTO {
 
   private String id;
-  private String serviceType;
-  private String name;
-  private String description;
   private CepApiMockDTO infoCep;
+  private ServiceCepDTO serviceCep;
+  private boolean availabilityStatus;
 }

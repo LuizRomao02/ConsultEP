@@ -1,6 +1,7 @@
 package com.luizromao.consultep.presentation.controller;
 
 import com.luizromao.consultep.application.dto.ServiceAvailabilityDTO;
+import com.luizromao.consultep.application.dto.ServiceAvailabilityDetailsDTO;
 import com.luizromao.consultep.application.dto.record.ServiceAvailabilityCheckForm;
 import com.luizromao.consultep.application.dto.record.ServiceAvailabilityForm;
 import com.luizromao.consultep.application.service.ServiceAvailabilityService;
@@ -41,6 +42,11 @@ public class ServiceAvailabilityController {
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<Page<ServiceAvailabilityDTO>> getAll(@PageableDefault Pageable pageable) {
     return ResponseEntity.ok(serviceAvailabilityService.findAllServiceAvailability(pageable));
+  }
+
+  @GetMapping(value = "/details/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<ServiceAvailabilityDetailsDTO> getServiceDetails(@PathVariable String id) {
+    return ResponseEntity.ok(serviceAvailabilityService.findDetailsServiceAvailability(id));
   }
 
   @GetMapping(value = "/{cep}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -15,7 +15,7 @@ public class CreateServiceAvailabilityUseCase {
   private final ServiceCepService serviceCepService;
 
   public ServiceAvailability create(ServiceAvailabilityForm form) {
-    var serviceCep = serviceCepService.findServiceCepById(form.serviceCepId());
+    var serviceCep = serviceCepService.getById(form.serviceCepId());
 
     ServiceAvailability serviceAvailability =
         ServiceAvailability.builder()

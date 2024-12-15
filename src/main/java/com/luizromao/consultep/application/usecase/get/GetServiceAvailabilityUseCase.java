@@ -30,7 +30,7 @@ public class GetServiceAvailabilityUseCase {
   }
 
   @Transactional(readOnly = true)
-  public ServiceAvailability getOneServiceAvailability(String id) {
+  public ServiceAvailability getById(String id) {
     return serviceAvailabilityRepository
         .findById(id)
         .orElseThrow(
