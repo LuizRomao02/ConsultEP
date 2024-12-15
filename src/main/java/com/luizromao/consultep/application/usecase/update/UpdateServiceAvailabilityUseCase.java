@@ -17,7 +17,7 @@ public class UpdateServiceAvailabilityUseCase {
 
   @Transactional
   public ServiceAvailability execute(String id, ServiceAvailabilityForm form) {
-    var serviceAvailability = getServiceAvailability.getOneServiceAvailability(id);
+    var serviceAvailability = getServiceAvailability.getById(id);
 
     serviceAvailability.setCep(form.cep());
     serviceAvailability.setAvailabilityStatus(form.availabilityStatus());

@@ -1,9 +1,6 @@
 package com.luizromao.consultep.application.util;
 
-import com.luizromao.consultep.application.dto.LogCepDTO;
-import com.luizromao.consultep.application.dto.ServiceAvailabilityDTO;
-import com.luizromao.consultep.application.dto.ServiceCepDTO;
-import com.luizromao.consultep.application.dto.UserCepDTO;
+import com.luizromao.consultep.application.dto.*;
 import com.luizromao.consultep.domain.model.LogCep;
 import com.luizromao.consultep.domain.model.ServiceAvailability;
 import com.luizromao.consultep.domain.model.ServiceCep;
@@ -32,5 +29,9 @@ public class ConverterToDTO {
 
   public ServiceAvailabilityDTO toDto(final ServiceAvailability model) {
     return modelMapper.map(model, ServiceAvailabilityDTO.class);
+  }
+
+  public ServiceAvailabilityDetailsDTO toDetailsDto(final ServiceAvailability model) {
+    return modelMapper.map(model, ServiceAvailabilityDetailsDTO.class);
   }
 }
