@@ -42,9 +42,9 @@ public class ServiceCepController {
         .body(serviceCepService.updateServiceCep(id, serviceCep));
   }
 
-  @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Void> deleteAuthor(@PathVariable String id) {
-    serviceCepService.deleteServiceCep(id);
+  @DeleteMapping(value = "/{userById}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Void> deleteAuthor(@PathVariable String userById, @PathVariable String id) {
+    serviceCepService.deleteServiceCep(userById, id);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 }
