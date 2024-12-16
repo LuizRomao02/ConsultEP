@@ -34,4 +34,8 @@ public class ConverterToDTO {
   public ServiceAvailabilityDetailsDTO toDetailsDto(final ServiceAvailability model) {
     return modelMapper.map(model, ServiceAvailabilityDetailsDTO.class);
   }
+
+  public CheckServiceAvailabilityDTO toCheckDto(final ServiceAvailability model) {
+    return modelMapper.map(model, CheckServiceAvailabilityDTO.class);
+  }
 }

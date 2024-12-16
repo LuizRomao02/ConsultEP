@@ -7,9 +7,8 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceAvailabilityDetailsDTO {
+public class CheckServiceAvailabilityDTO {
 
   private String id;
-  private ServiceCepDTO serviceCep;
   private boolean availabilityStatus;
 }

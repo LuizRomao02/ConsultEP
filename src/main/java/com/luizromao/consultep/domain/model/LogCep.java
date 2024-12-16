@@ -16,10 +16,10 @@ import lombok.experimental.SuperBuilder;
 public class LogCep extends BaseEntity {
 
   @ManyToOne
-  @JoinColumn(name = "user_cep_id", nullable = false)
+  @JoinColumn(name = "user_cep_id")
   private UserCep userCep;
 
-  @Column(nullable = false, length = 8)
+  @Column(length = 8)
   private String cep;
 
   @Column(name = "request_type", nullable = false, length = 50)
