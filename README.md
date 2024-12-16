@@ -13,7 +13,7 @@ com.luizromao.consultep
 │   └── dto            # Objetos de transferência de dados
 │   │   ├── 
 │   │   └── 
-│		└── service        # Regras de negócio - orquestração dos use cases
+│	└── service        # Regras de negócio - orquestração dos use cases
 │   │   ├──
 │   │   └── 
 ├── 🏛️ domain
