@@ -1,10 +1,12 @@
 package com.luizromao.consultep.presentation.controller;
 
+import com.luizromao.consultep.application.dto.CheckServiceAvailabilityDTO;
 import com.luizromao.consultep.application.dto.ServiceAvailabilityDTO;
 import com.luizromao.consultep.application.dto.ServiceAvailabilityDetailsDTO;
 import com.luizromao.consultep.application.dto.record.ServiceAvailabilityCheckForm;
 import com.luizromao.consultep.application.dto.record.ServiceAvailabilityForm;
 import com.luizromao.consultep.application.service.ServiceAvailabilityService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,7 +35,8 @@ public class ServiceAvailabilityController {
       value = "/check_availability",
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Boolean> checkAvailability(@RequestBody ServiceAvailabilityCheckForm form) {
+  public ResponseEntity<List<CheckServiceAvailabilityDTO>> checkAvailability(
+      @RequestBody ServiceAvailabilityCheckForm form) {
     return ResponseEntity.ok(
         serviceAvailabilityService.checkAvailability(
             form.serviceCepId(), form.cep(), form.userCepId()));
@@ -66,9 +69,9 @@ public class ServiceAvailabilityController {
         .body(serviceAvailabilityService.updateServiceAvailability(id, serviceCep));
   }
 
-  @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Void> deleteAuthor(@PathVariable String id) {
-    serviceAvailabilityService.deleteServiceAvailability(id);
+  @DeleteMapping(value = "/{userById}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Void> deleteAuthor(@PathVariable String userById, @PathVariable String id) {
+    serviceAvailabilityService.deleteServiceAvailability(userById, id);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 }

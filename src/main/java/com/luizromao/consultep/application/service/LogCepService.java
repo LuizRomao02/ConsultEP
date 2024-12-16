@@ -4,6 +4,8 @@ import com.luizromao.consultep.application.dto.LogCepDTO;
 import com.luizromao.consultep.application.usecase.create.CreateLogCepUseCase;
 import com.luizromao.consultep.application.usecase.get.GetLogCepUseCase;
 import com.luizromao.consultep.application.util.ConverterToDTO;
+import com.luizromao.consultep.application.util.JsonConverter;
+import com.luizromao.consultep.domain.model.UserCep;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,12 +17,11 @@ public class LogCepService {
 
   private final CreateLogCepUseCase createLogCepUseCase;
   private final GetLogCepUseCase getLogCepUseCase;
-  private final UserCepService userCepService;
   private final ConverterToDTO converterToDTO;
+  private final JsonConverter jsonConverter;
 
-  public void createLogCep(String userCepId, String cep, String requestType, String data) {
-    var userCep = userCepService.findUserCepById(userCepId);
-    createLogCepUseCase.execute(userCep, cep, requestType, data);
+  public void createLogCep(UserCep userCep, String cep, String requestType, Object object) {
+    createLogCepUseCase.execute(userCep, cep, requestType, jsonConverter.toJson(object));
   }
 
   public Page<LogCepDTO> getLogByUser(String userCepId, Pageable pageable) {

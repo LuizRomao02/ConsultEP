@@ -1,9 +1,6 @@
 package com.luizromao.consultep.domain.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,4 +27,8 @@ public class ServiceCep extends BaseEntity {
 
   @OneToMany(mappedBy = "serviceCep", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<ServiceAvailability> serviceAvailabilities;
+
+  @ManyToOne
+  @JoinColumn(name = "created_by_user_id", nullable = false)
+  private UserCep createdBy;
 }

@@ -27,4 +27,8 @@ public class ServiceAvailability extends BaseEntity {
 
   @Column(name = "availability_status", nullable = false)
   private boolean availabilityStatus;
+
+  @ManyToOne
+  @JoinColumn(name = "created_by_user_id", nullable = false)
+  private UserCep createdBy;
 }

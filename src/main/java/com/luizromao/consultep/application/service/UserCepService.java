@@ -27,11 +27,11 @@ public class UserCepService {
     return getUserCepUseCase.getAll(pageable).map(converterToDTO::toDto);
   }
 
-  public UserCep findUserCepById(String id) {
+  public UserCep getById(String id) {
     return getUserCepUseCase.getById(id);
   }
 
   public UserCepDTO getUserCep(String id) {
-    return converterToDTO.toDto(findUserCepById(id));
+    return converterToDTO.toDto(getById(id));
   }
 }
