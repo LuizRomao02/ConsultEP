@@ -14,6 +14,17 @@ services:
     networks:
       - consultep_network
 
+  mockoon:
+    build:
+      context: ./mockoon
+    container_name: mockoon-mock
+    ports:
+      - "3000:3000" # Mapeia a porta do Mockoon para a máquina host
+    volumes:
+      - ./mockoon/api_mockada_cep.json:/mockoon/api_mockada_cep.json:ro
+      - ./mockoon/mockoon_config.json:/mockoon/mockoon_config.json:ro
+    restart: always
+
 volumes:
   mysql_data:
 
