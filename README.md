@@ -13,7 +13,7 @@ com.luizromao.consultep
 │   └── dto            # Objetos de transferência de dados
 │   │   ├── 
 │   │   └── 
-│	└── service        # Regras de negócio - orquestração dos use cases
+│		└── service        # Regras de negócio - orquestração dos use cases
 │   │   ├──
 │   │   └── 
 ├── 🏛️ domain
@@ -41,6 +41,33 @@ com.luizromao.consultep
         ├── 
         └── 
 ```
+
+# Clean Architecture
+
+A **Clean Architecture** é baseada na separação de responsabilidades e dependências direcionais bem definidas. Analisando sua estrutura:
+
+- **Camadas Definidas:**
+    - `application`: Contém os **use cases** e serviços de orquestração, que são centrais para a regra de negócio. Nesta camada, os objetos (`DTO`) são transferidos de e para as camadas externas, respeitando a **dependência invertida**.
+    - `domain`: Inclui os modelos e as interfaces dos repositórios. Essa camada é **independente** e representa o núcleo do sistema.
+    - `infrastructure`: Trata implementações técnicas específicas, como repositórios e adaptadores para serviços externos, seguindo a ideia de que a infraestrutura é um detalhe que pode ser substituído sem impactar o restante do sistema.
+    - `presentation`: Responsável pela interface com o usuário (APIs). Os controladores e o tratamento de exceções se concentram aqui, sem lógica de negócio.
+- **Direção da Dependência:**
+    - Se a camada de domínio não depende de outras camadas e todas as outras camadas dependem da `domain`, está de acordo com os princípios da Clean Architecture.
+
+# SOLID
+
+Os princípios de SOLID ajudam a criar um código mais modular, escalável e fácil de manter.
+
+1. **Single Responsibility Principle (SRP):**
+    - Cada pacote parece ter uma responsabilidade clara, como `usecase` para lógica de aplicação e `model` para entidades de domínio. Isso demonstra boa separação.
+2. **Open/Closed Principle (OCP):**
+    - O uso de `repository` como interfaces em `domain` permite que as implementações em `infrastructure` sejam substituíveis sem modificar a lógica de negócio. Isso segue o OCP.
+3. **Liskov Substitution Principle (LSP):**
+    - A prática de definir interfaces em `domain.repository` para repositórios sugere que classes que implementam essas interfaces devem ser intercambiáveis sem quebrar o sistema.
+4. **Interface Segregation Principle (ISP):**
+    - A estrutura incentiva interfaces menores e específicas (como repositórios individuais). Isso evita a criação de "interfaces gordas".
+5. **Dependency Inversion Principle (DIP):**
+    - Com a dependência sendo dirigida de fora para dentro (camadas externas dependendo da `domain` via interfaces), o DIP é respeitado.
 
 # Docker
 
