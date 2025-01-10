@@ -13,9 +13,18 @@ com.luizromao.consultep
 │   └── dto            # Objetos de transferência de dados
 │   │   ├── 
 │   │   └── 
-│		└── service        # Regras de negócio - orquestração dos use cases
+│	└── service        # Regras de negócio - orquestração dos use cases
 │   │   ├──
-│   │   └── 
+│   │   └──
+│	└── exeption       # Tratamento das exceções dos use cases
+│   │   ├──
+│   │   └──
+│	└── validation     # Anotações responsáveis pela validação dos dados
+│   │   ├──
+│   │   └──
+│	└── util           # Pacote de utilidades
+│   │   ├──
+│   │   └──
 ├── 🏛️ domain
 │   ├── model          # Entidades e objetos de domínio
 │   │   ├── 
@@ -24,13 +33,7 @@ com.luizromao.consultep
 │   │   ├── 
 │   │   └── 
 ├── ⚙️ infrastructure
-│   ├── repository     # Implementação dos repositórios
-│   │   ├── 
-│   │   └── 
-│   ├── adapter        # Adaptadores para serviços externos
-│   │   ├── 
-│   │   └── 
-│   └── config         # Configurações
+│   └── config         # Configurações da aplicação
 │       ├── 
 │       └── 
 └── 🖥️ presentation
