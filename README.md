@@ -13,9 +13,18 @@ com.luizromao.consultep
 │   └── dto            # Objetos de transferência de dados
 │   │   ├── 
 │   │   └── 
-│		└── service        # Regras de negócio - orquestração dos use cases
+│   └── service        # Regras de negócio - orquestração dos use cases
 │   │   ├──
-│   │   └── 
+│   │   └──
+│   └── exeption       # Tratamento das exceções dos use cases
+│   │   ├──
+│   │   └──
+│   └── validation     # Anotações responsáveis pela validação dos dados
+│   │   ├──
+│   │   └──
+│   └── util           # Pacote de utilidades
+│   │   ├──
+│   │   └──
 ├── 🏛️ domain
 │   ├── model          # Entidades e objetos de domínio
 │   │   ├── 
@@ -24,13 +33,7 @@ com.luizromao.consultep
 │   │   ├── 
 │   │   └── 
 ├── ⚙️ infrastructure
-│   ├── repository     # Implementação dos repositórios
-│   │   ├── 
-│   │   └── 
-│   ├── adapter        # Adaptadores para serviços externos
-│   │   ├── 
-│   │   └── 
-│   └── config         # Configurações
+│   └── config         # Configurações da aplicação
 │       ├── 
 │       └── 
 └── 🖥️ presentation
@@ -59,7 +62,7 @@ A **Clean Architecture** é baseada na separação de responsabilidades e depend
 Os princípios de SOLID ajudam a criar um código mais modular, escalável e fácil de manter.
 
 1. **Single Responsibility Principle (SRP):**
-    - Cada pacote parece ter uma responsabilidade clara, como `usecase` para lógica de aplicação e `model` para entidades de domínio. Isso demonstra boa separação.
+    - Cada pacote tem uma responsabilidade clara, como `usecase` para lógica de aplicação e `model` para entidades de domínio. Isso demonstra boa separação.
 2. **Open/Closed Principle (OCP):**
     - O uso de `repository` como interfaces em `domain` permite que as implementações em `infrastructure` sejam substituíveis sem modificar a lógica de negócio. Isso segue o OCP.
 3. **Liskov Substitution Principle (LSP):**
