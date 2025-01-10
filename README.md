@@ -13,16 +13,16 @@ com.luizromao.consultep
 │   └── dto            # Objetos de transferência de dados
 │   │   ├── 
 │   │   └── 
-│	└── service        # Regras de negócio - orquestração dos use cases
+│   └── service        # Regras de negócio - orquestração dos use cases
 │   │   ├──
 │   │   └──
-│	└── exeption       # Tratamento das exceções dos use cases
+│   └── exeption       # Tratamento das exceções dos use cases
 │   │   ├──
 │   │   └──
-│	└── validation     # Anotações responsáveis pela validação dos dados
+│   └── validation     # Anotações responsáveis pela validação dos dados
 │   │   ├──
 │   │   └──
-│	└── util           # Pacote de utilidades
+│   └── util           # Pacote de utilidades
 │   │   ├──
 │   │   └──
 ├── 🏛️ domain
