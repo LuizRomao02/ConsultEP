@@ -66,11 +66,11 @@ Os princípios de SOLID ajudam a criar um código mais modular, escalável e fá
 2. **Open/Closed Principle (OCP):**
     - O uso de `repository` como interfaces em `domain` permite que as implementações em `infrastructure` sejam substituíveis sem modificar a lógica de negócio. Isso segue o OCP.
 3. **Liskov Substitution Principle (LSP):**
-    - A prática de definir interfaces em `domain.repository` para repositórios sugere que classes que implementam essas interfaces devem ser intercambiáveis sem quebrar o sistema.
+    - A prática de definir interfaces em `domain.repository` para repositórios sugere que classes que implementam essas interfaces devem ser trocadas sem quebrar o sistema.
 4. **Interface Segregation Principle (ISP):**
     - A estrutura incentiva interfaces menores e específicas (como repositórios individuais). Isso evita a criação de "interfaces gordas".
 5. **Dependency Inversion Principle (DIP):**
-    - Com a dependência sendo dirigida de fora para dentro (camadas externas dependendo da `domain` via interfaces), o DIP é respeitado.
+    - Com a dependência sendo dirigida de fora para dentro (camadas externas dependendo da `domain` via interfaces).
 
 # Docker
 
