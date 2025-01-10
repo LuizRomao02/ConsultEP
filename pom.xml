@@ -12,7 +12,7 @@
 
 	<groupId>com.luizromao.consultep</groupId>
 	<artifactId>ConsultEP</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>00.00.01</version>
 	<name>ConsultEP</name>
 	<description>Project ConsultEP</description>
 
@@ -98,6 +98,14 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.4.0</version>
+				<configuration>
+					<mainClass>com.luizromao.consultep.ConsultepApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

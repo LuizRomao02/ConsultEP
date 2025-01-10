@@ -19,11 +19,29 @@ services:
       context: ./mockoon
     container_name: mockoon-mock
     ports:
-      - "3000:3000" # Mapeia a porta do Mockoon para a máquina host
+      - "3000:3000"
     volumes:
       - ./mockoon/api_mockada_cep.json:/mockoon/api_mockada_cep.json:ro
       - ./mockoon/mockoon_config.json:/mockoon/mockoon_config.json:ro
     restart: always
+    networks:
+      - consultep_network
+
+  springboot-app:
+    build:
+      context: ..
+      dockerfile: Dockerfile # Dockerfile na raiz do projeto
+    container_name: springboot-app
+    ports:
+      - "8080:8080" # Porta da aplicação Spring Boot
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/consultep
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword
+    depends_on:
+      - mysql
+    networks:
+      - consultep_network
 
 volumes:
   mysql_data:
